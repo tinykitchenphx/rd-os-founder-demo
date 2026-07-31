@@ -11,9 +11,10 @@ No source code is published here. This repository contains the demonstration onl
 
 ## Watch
 
-**[▶ Lead Tracker walkthrough](video/rdos-lead-tracker-demo.webm)** · 1920 × 1080 · 7 min 56 s
+**[▶ Lead Tracker demonstration](video/rd-os-founder-demo.mp4)** · MP4 · 1920 × 1080 · 90 seconds
 
-Stills from the walkthrough are in [`screenshots/`](screenshots/) if you would rather scan than watch.
+A WebM copy is kept alongside it at [`video/rd-os-founder-demo.webm`](video/rd-os-founder-demo.webm).
+Stills are in [`screenshots/`](screenshots/) if you would rather scan than watch.
 
 ---
 
@@ -75,7 +76,7 @@ Next.js · React · TypeScript · Tailwind CSS · Framer Motion · ECharts · dn
 ```
 README.md                     this file
 docs/PROJECT_SYNOPSIS.md      the longer-form project description
-video/                        the demonstration recording
+video/                        the demonstration, MP4 with a WebM copy
 screenshots/                  eleven stills from the walkthrough
 ```
 
