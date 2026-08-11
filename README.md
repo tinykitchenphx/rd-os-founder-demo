@@ -81,6 +81,8 @@ Next.js · React · TypeScript · Tailwind CSS · Framer Motion · ECharts · dn
 
 # 2 · Field Report
 
+[![Field Report — click to watch](posters/exhibit-01.png)](video/rd-os-field-report.mp4)
+
 **[▶ Watch the field report](video/rd-os-field-report.mp4)** · MP4 · 1080 × 1350 · 2 minutes 40 seconds
 **[Read it instead](docs/FIELD_REPORT.md)** — the same material in full, as text.
 
@@ -113,6 +115,8 @@ not reconstructed afterward.
 # 3 · Beyond Prompting
 
 **Employment Evidence Series · Exhibit 02**
+
+[![Beyond Prompting — click to watch](posters/exhibit-02.png)](video/rd-os-exhibit-02-beyond-prompting.mp4)
 
 **[▶ Watch Beyond Prompting](video/rd-os-exhibit-02-beyond-prompting.mp4)** · MP4 · 1080 × 1350 · 3 minutes
 **[Read it instead](docs/EXHIBIT_02_BEYOND_PROMPTING.md)** — the same material in full, as text.
