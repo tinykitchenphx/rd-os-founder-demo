@@ -135,8 +135,6 @@ observe, characterize, assign, architect, evaluate, intervene, measure, transfer
 
 > Don't keep adding instructions to a problem that isn't an instruction problem.
 
-I was working this way before I had words for it. The vocabulary came last.
-
 ---
 
 ## Repository contents

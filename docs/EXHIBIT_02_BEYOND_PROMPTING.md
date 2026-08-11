@@ -11,7 +11,7 @@ Employment Evidence Series
 
 Exhibit 01 documents what happened, with the evidence. This exhibit is the mental model that came
 out of it — what I learned observing, evaluating, and working alongside multiple AI systems, and the
-vocabulary I only found afterward, walking back through my own work.
+operating model I now work from.
 
 ---
 
@@ -161,7 +161,7 @@ Three different contexts. One underlying principle, arriving three times before 
 | **07** | Measure | Compare behavior before and after the intervention |
 | **08** | Transfer | Extract what applies beyond this one model |
 
-I was working this way before I had words for it. The vocabulary came last.
+Eight stages. Each one answers a question the previous stage makes it possible to ask.
 
 ---
 
