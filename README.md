@@ -1,17 +1,21 @@
-# RD-OS — Lead Tracker
+# RD-OS — Founder Demonstration
 
-**A demonstration artifact.** RD-OS (Rapid Deploy Operating System) is an AI-assisted operational
-workspace for small businesses. This repository holds a recorded walkthrough of one capability
-inside it — the **Lead Tracker** — for hiring managers, recruiters, technical interviewers and AI
-product teams.
+**Demonstration artifacts.** RD-OS (Rapid Deploy Operating System) is an AI-assisted operational
+workspace for small businesses. This repository holds public artifacts from its development — for
+hiring managers, recruiters, technical interviewers and AI product teams.
 
-No source code is published here. This repository contains the demonstration only.
+No source code is published here. This repository contains the demonstrations only.
+
+| Artifact | What it shows | Length |
+|---|---|---|
+| **[Lead Tracker](#1--lead-tracker-demonstration)** | A recorded walkthrough of one capability inside RD-OS | 90 seconds |
+| **[Field Report](#2--field-report)** | What building RD-OS with multiple frontier AI systems taught me about managing AI behavior | 2 min 40 s |
 
 ---
 
-## Watch
+# 1 · Lead Tracker demonstration
 
-**[▶ Lead Tracker demonstration](video/rd-os-founder-demo.mp4)** · MP4 · 1920 × 1080 · 90 seconds
+**[▶ Watch the Lead Tracker demonstration](video/rd-os-founder-demo.mp4)** · MP4 · 1920 × 1080 · 90 seconds
 
 A WebM copy is kept alongside it at [`video/rd-os-founder-demo.webm`](video/rd-os-founder-demo.webm).
 Stills are in [`screenshots/`](screenshots/) if you would rather scan than watch.
@@ -71,13 +75,46 @@ Next.js · React · TypeScript · Tailwind CSS · Framer Motion · ECharts · dn
 
 ---
 
+# 2 · Field Report
+
+**[▶ Watch the field report](video/rd-os-field-report.mp4)** · MP4 · 1080 × 1350 · 2 minutes 40 seconds
+**[Read it instead](docs/FIELD_REPORT.md)** — the same material in full, as text.
+
+> **AI behavior must be managed at the level where the failure occurs.**
+
+RD-OS was engineered by multiple frontier AI systems working under a governance model I wrote and
+enforced. At peak I was directing seven of them concurrently, across four vendor platforms that
+could not talk to each other.
+
+Every time something went wrong, the instinct was to write a better prompt. Clearer instructions,
+more constraints, explicit acceptance criteria — my instruction files grew to pages of them. It
+didn't work, and my own engineering record shows why: implementation cards were *"followed correctly
+on the letter,"* and still produced a gap between what engineering verified and what I could see.
+
+Compliance was achieved. The failure persisted anyway.
+
+The report documents nine catalogued AI behaviors, two exhibits examined in detail — a word that
+resolved to seven different files, and a required screenshot that was never produced — one measured
+outcome of twelve hours and zero accepted deliverables, and the layer model that finally worked.
+
+Its central finding:
+
+> Writing the requirement down is *also* the instruction layer — and it has the same ceiling.
+
+Evidence first, thesis second. Every figure and quotation is drawn from records written at the time,
+not reconstructed afterward.
+
+---
+
 ## Repository contents
 
 ```
 README.md                     this file
 docs/PROJECT_SYNOPSIS.md      the longer-form project description
-video/                        the demonstration, MP4 with a WebM copy
-screenshots/                  eleven stills from the walkthrough
+docs/FIELD_REPORT.md          the field report, in full, as text
+video/rd-os-founder-demo.*    the Lead Tracker demonstration, MP4 with a WebM copy
+video/rd-os-field-report.mp4  the field report
+screenshots/                  eleven stills from the Lead Tracker walkthrough
 ```
 
 ## Contact
