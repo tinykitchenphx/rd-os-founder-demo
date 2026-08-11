@@ -9,7 +9,11 @@ No source code is published here. This repository contains the demonstrations on
 | Artifact | What it shows | Length |
 |---|---|---|
 | **[Lead Tracker](#1--lead-tracker-demonstration)** | A recorded walkthrough of one capability inside RD-OS | 90 seconds |
-| **[Field Report](#2--field-report)** | What building RD-OS with multiple frontier AI systems taught me about managing AI behavior | 2 min 40 s |
+| **[Exhibit 01 — Field Report](#2--field-report)** | What building RD-OS with multiple frontier AI systems taught me about managing AI behavior — with the evidence | 2 min 40 s |
+| **[Exhibit 02 — Beyond Prompting](#3--beyond-prompting)** | The evaluator methodology that emerged from it — the mental model, without the case files | 3 min |
+
+The two exhibits form the **Employment Evidence Series**. Exhibit 01 is the evidence; Exhibit 02 is
+the method.
 
 ---
 
@@ -106,15 +110,46 @@ not reconstructed afterward.
 
 ---
 
+# 3 · Beyond Prompting
+
+**Employment Evidence Series · Exhibit 02**
+
+**[▶ Watch Beyond Prompting](video/rd-os-exhibit-02-beyond-prompting.mp4)** · MP4 · 1080 × 1350 · 3 minutes
+**[Read it instead](docs/EXHIBIT_02_BEYOND_PROMPTING.md)** — the same material in full, as text.
+
+Exhibit 01 documents what happened, with the evidence. **This one is the mental model that came out
+of it.**
+
+I stopped asking *"How do I prompt this model to do what I want?"* and started asking *"What is this
+model actually capable of doing reliably?"* — then built an operational profile of each system:
+capability, failure mode, reasoning style, representation preference, output behavior, constraint
+response, recovery behavior, role suitability.
+
+The systems became instruments. A model failure is not always a model problem — sometimes it is a
+role-assignment problem, and those are corrected somewhere entirely different. Which makes the
+evaluator's question **"was this an appropriate task for this model in the first place?"**
+
+The exhibit covers the intervention layers, the evaluation architecture that precedes any prompt,
+what distinguishes a hard question from a well-designed evaluation, and the eight-stage method —
+observe, characterize, assign, architect, evaluate, intervene, measure, transfer.
+
+> Don't keep adding instructions to a problem that isn't an instruction problem.
+
+I was working this way before I had words for it. The vocabulary came last.
+
+---
+
 ## Repository contents
 
 ```
-README.md                     this file
-docs/PROJECT_SYNOPSIS.md      the longer-form project description
-docs/FIELD_REPORT.md          the field report, in full, as text
-video/rd-os-founder-demo.*    the Lead Tracker demonstration, MP4 with a WebM copy
-video/rd-os-field-report.mp4  the field report
-screenshots/                  eleven stills from the Lead Tracker walkthrough
+README.md                                 this file
+docs/PROJECT_SYNOPSIS.md                  the longer-form project description
+docs/FIELD_REPORT.md                      Exhibit 01, in full, as text
+docs/EXHIBIT_02_BEYOND_PROMPTING.md       Exhibit 02, in full, as text
+video/rd-os-founder-demo.*                the Lead Tracker demonstration, MP4 with a WebM copy
+video/rd-os-field-report.mp4              Exhibit 01
+video/rd-os-exhibit-02-beyond-prompting.mp4   Exhibit 02
+screenshots/                              eleven stills from the Lead Tracker walkthrough
 ```
 
 ## Contact
