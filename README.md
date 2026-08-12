@@ -1,8 +1,11 @@
-# RD-OS — Founder Demonstration
+# RD-OS — Demonstration, Evidence &amp; Résumé
 
-**Demonstration artifacts.** RD-OS (Rapid Deploy Operating System) is an AI-assisted operational
-workspace for small businesses. This repository holds public artifacts from its development — for
-hiring managers, recruiters, technical interviewers and AI product teams.
+### Traci R. White — AI Trainer · LLM Evaluator · AI Workflow &amp; Context Engineer
+
+**RD-OS** (Rapid Deploy Operating System) is an AI-assisted operational workspace for small
+businesses. This repository holds the public artifacts from its development — a product
+demonstration, the Employment Evidence Series, and an automated résumé — for hiring managers,
+recruiters, technical interviewers and AI product teams.
 
 ### ▶ **[Watch everything in one place — tinykitchenphx.github.io/rd-os-founder-demo](https://tinykitchenphx.github.io/rd-os-founder-demo/)**
 
