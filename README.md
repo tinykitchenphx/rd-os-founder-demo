@@ -4,6 +4,10 @@
 workspace for small businesses. This repository holds public artifacts from its development — for
 hiring managers, recruiters, technical interviewers and AI product teams.
 
+### ▶ **[Watch everything in one place — tinykitchenphx.github.io/rd-os-founder-demo](https://tinykitchenphx.github.io/rd-os-founder-demo/)**
+
+All three videos play inline on that page. No downloads, no file browsing.
+
 No source code is published here. This repository contains the demonstrations only.
 
 | Artifact | What it shows | Length |
