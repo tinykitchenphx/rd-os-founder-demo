@@ -15,6 +15,7 @@ No source code is published here. This repository contains the demonstrations on
 | **[Lead Tracker](#1--lead-tracker-demonstration)** | A recorded walkthrough of one capability inside RD-OS | 90 seconds |
 | **[Exhibit 01 — Field Report](#2--field-report)** | What building RD-OS with multiple frontier AI systems taught me about managing AI behavior — with the evidence | 2 min 40 s |
 | **[Exhibit 02 — Beyond Prompting](#3--beyond-prompting)** | The evaluator methodology that emerged from it — the mental model, without the case files | 3 min |
+| **[Résumé](#4--résumé)** | AI Trainer · LLM Evaluator · AI Workflow &amp; Context Engineer | 5 min |
 
 The two exhibits form the **Employment Evidence Series**. Exhibit 01 is the evidence; Exhibit 02 is
 the method.
@@ -145,6 +146,25 @@ observe, characterize, assign, architect, evaluate, intervene, measure, transfer
 
 ---
 
+# 4 · Résumé
+
+[![Résumé — click to watch](posters/resume.png)](video/rd-os-resume.mp4)
+
+**[▶ Watch the résumé](video/rd-os-resume.mp4)** · MP4 · 1080 × 1350 · 5 minutes
+
+**Traci R. White** — AI Trainer · LLM Evaluator · AI Workflow &amp; Context Engineer
+
+Organized around the evaluation loop it describes: **output → observe → annotate → analyze →
+evaluate → judge → intervene → new output.** Every competency is placed against its stage, with
+experienced and knowledgeable areas kept visually distinct rather than blended.
+
+Covers multimodal and LLM response evaluation, annotation and ground-truth development, failure and
+error analysis, rubric application, comparative judgment, feedback and training-signal concepts,
+layered intervention, and iterative re-evaluation — alongside the Project Voyager, RD-OS, and
+Rockefeller University experience behind them.
+
+---
+
 ## Repository contents
 
 ```
@@ -155,7 +175,10 @@ docs/EXHIBIT_02_BEYOND_PROMPTING.md       Exhibit 02, in full, as text
 video/rd-os-founder-demo.*                the Lead Tracker demonstration, MP4 with a WebM copy
 video/rd-os-field-report.mp4              Exhibit 01
 video/rd-os-exhibit-02-beyond-prompting.mp4   Exhibit 02
+video/rd-os-resume.mp4                    the résumé
+posters/                                  title-frame previews
 screenshots/                              eleven stills from the Lead Tracker walkthrough
+index.html                                the viewer page served by GitHub Pages
 ```
 
 ## Contact
