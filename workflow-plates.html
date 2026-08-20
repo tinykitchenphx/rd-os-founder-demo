@@ -507,7 +507,7 @@
     <h1>RD-OS Workflow Plates</h1>
     <p class="thesis">AI must be managed at the level where failure occurs.</p>
 
-    <p class="standfirst">Eight mechanism diagrams of the human-governed multi-agent workflows used to build RD-OS. Each plate names the level its failure lives at, then shows what managing at that level actually requires: how work was assigned across models, how disagreement was resolved, how behavior was constrained without tooling, and where a human decision was structurally required.</p>
+    <p class="standfirst">Eight mechanism diagrams of the human-governed multi-agent workflows used to build RD-OS. Each plate names the level at which its failure occurred, then shows what managing at that level actually requires: how work was assigned across models, how disagreement was resolved, how behavior was constrained without tooling, and where a human decision was structurally required.</p>
 
     <dl class="titleblock">
       <div><dt>Prepared by</dt><dd>Traci White</dd></div>
@@ -520,7 +520,7 @@
 
   <section class="note">
     <h2>Scope of disclosure</h2>
-    <p>These plates document <strong>engineering methodology</strong>: how work was decided, assigned, evaluated and corrected. They deliberately exclude proprietary implementation, internal architecture, unreleased capabilities and forward plans. Each plate is drawn from a case study already cleared for external release, and cites that source in its title block.</p>
+    <p>These plates document <strong>engineering methodology</strong>: how work was decided, assigned, evaluated, and corrected. They deliberately exclude proprietary implementation, internal architecture, unreleased capabilities, and forward plans. Each plate is drawn from a case study already cleared for external release, and cites that source in its title block.</p>
     <p>Every diagram here is readable by someone with no prior knowledge of RD-OS. That is the point: the workflows are the transferable part.</p>
   </section>
 
@@ -559,11 +559,11 @@
     </div>
     <div class="locus">Failure occurs at · behavior, not hardware</div>
     <div class="plate-body">
-      <p>A traditional operating system allocates hardware: processor time, memory pages, disk and device access, handed to deterministic programs that will do the same thing every time they run. An AI operating system allocates a different scarce resource. What has to be scheduled, budgeted and protected is context and reasoning, which means deciding how much of a limited context window a task gets, which model handles it at what cost, what the system remembers between sessions, and how several agents working at once stay coordinated instead of quietly contradicting each other.</p>
+      <p>A traditional operating system allocates hardware: processor time, memory pages, disk and device access, handed to deterministic programs that will do the same thing every time they run. An AI operating system allocates a different scarce resource. What has to be scheduled, budgeted, and protected is context and reasoning, which means deciding how much of a limited context window a task gets, which model handles it at what cost, what the system remembers between sessions, and how several agents working at once stay coordinated instead of quietly contradicting each other.</p>
 
       <div class="figure-scroll">
         <figure>
-          <svg viewBox="0 0 900 530" role="img" aria-label="A seven row comparison of a traditional operating system against an AI operating system across primary resource, scheduling, state and memory, execution logic, interface, evolution, and characteristic failure. In each row the traditional mechanism is replaced by an intelligence layer equivalent: hardware becomes context windows and model calls, process scheduling becomes orchestration of reasoning cycles, paging becomes tiered semantic memory, deterministic compilation becomes probabilistic agentic execution, system calls become natural language and tool calls, static patches become continuous adaptation, and crashes become drift, hallucination and silent scope expansion.">
+          <svg viewBox="0 0 900 530" role="img" aria-label="A seven row comparison of a traditional operating system against an AI operating system across primary resource, scheduling, state and memory, execution logic, interface, evolution, and characteristic failure. In each row the traditional mechanism is replaced by an intelligence layer equivalent: hardware becomes context windows and model calls, process scheduling becomes orchestration of reasoning cycles, paging becomes tiered semantic memory, deterministic compilation becomes probabilistic agentic execution, system calls become natural language and tool calls, static patches become continuous adaptation, and crashes become drift, hallucination, and silent scope expansion.">
             <defs>
               <marker id="ah0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
@@ -600,7 +600,7 @@
             <text class="d-t" x="385" y="211">Paging tables,</text>
             <text class="d-t" x="385" y="228">file system paths</text>
             <rect class="d-box" x="580" y="188" width="290" height="54" />
-            <text class="d-t" x="725" y="211">Tiered session, working</text>
+            <text class="d-t" x="725" y="211">Tiered session, working,</text>
             <text class="d-t" x="725" y="228">and long-term memory</text>
             <line class="d-flow" x1="520" y1="215" x2="574" y2="215" marker-end="url(#ah0)" />
 
@@ -728,7 +728,7 @@
     <div class="locus">Failure occurs at · assignment, not model capability</div>
     <div class="plate-body">
       <p>Models were not interchangeable. Each task class was routed by an observed characteristic (instruction adherence, reasoning depth, adversarial framing, domain grounding, cost per pass) rather than by general capability ranking. The routing criterion is the engineering content here; the assigned system is just where the criterion landed.</p>
-      <p>The bottom row came first. Before any code existed, operational domain input defined what RD-OS actually had to accomplish: the real menu, catering, logistics and correspondence constraints of a working business, and the edge cases those constraints generate.</p>
+      <p>The bottom row came first. Before any code existed, operational domain input defined what RD-OS actually had to accomplish: the real menu, catering, logistics, and correspondence constraints of a working business, and the edge cases those constraints generate.</p>
 
       <div class="figure-scroll">
         <figure>
@@ -844,7 +844,7 @@
     </div>
     <div class="locus">Failure occurs at · disagreement, before it hardens into a decision</div>
     <div class="plate-body">
-      <p>Architectural questions went to a chaired forum, not to a single model and not to a poll. Positions were stated, exchanged and contested: a model that disagreed had to support its position against the others, and rounds repeated until the disagreement resolved or stopped moving. No model held independent judgment and none decided alone.</p>
+      <p>Architectural questions went to a chaired forum, not to a single model and not to a poll. Positions were stated, exchanged, and contested: a model that disagreed had to support its position against the others, and rounds repeated until the disagreement resolved or stopped moving. No model held independent judgment and none decided alone.</p>
       <p>The models had no channel to each other. Nothing in the stack let one system read, answer, or even see another's position, so every exchange was carried by hand: a position taken from one model, put to the next, its response carried back, round after round until the argument resolved or stopped producing new ground. The Founder was the chair and the transport at the same time.</p>
       <p>The process is deliberately expensive, and its cost is human rather than computational. Convening the forum and relaying it to convergence costs far more than accepting the first plausible answer, which is why it was reserved for questions where being wrong cost more than the forum did.</p>
 
@@ -936,7 +936,7 @@
     </div>
     <div class="locus">Failure occurs at · classification, before implementation</div>
     <div class="plate-body">
-      <p>Capable models optimize. A model given a defined task, an explicit domain, positive and negative constraints, acceptance criteria and a rubric will still return more than it was asked for, because improving on the request is something the model brings to the work rather than a gap left open by the instruction. Prompt rigor lowers the rate; it does not remove the class.</p>
+      <p>Capable models optimize. A model given a defined task, an explicit domain, positive and negative constraints, acceptance criteria, and a rubric will still return more than it was asked for, because improving on the request is something the model brings to the work rather than a gap left open by the instruction. Prompt rigor lowers the rate; it does not remove the class.</p>
       <p>That makes scope expansion a standing condition to be handled structurally, not a defect to be prompted away. The surplus is frequently good work, which is exactly what makes it hazardous: deleting it wastes it, and merging it silently expands the system past what was authorized. Classification happens before implementation, and out-of-brief work is preserved on a branch where it stays recoverable, but re-entry is a human decision, not a default.</p>
 
       <div class="figure-scroll">
@@ -1245,7 +1245,7 @@
         <li><b>Whole-system, not single-turn</b>The corpus exercises multi-turn state and execution rather than one response in isolation, so constraints are verified where the system actually operates instead of where it is easiest to measure.</li>
       </ul>
 
-      <p>The workload this describes is poorly captured by counting models. Up to seven systems were in concurrent use, each with its own instruction style, failure modes and cost per pass, and the cost of the method was never the reasoning. It was the iteration: the same corpus re-run until the constraint set stopped producing new failures, then frozen so the next pass could not silently undo it.</p>
+      <p>The workload this describes is poorly captured by counting models. Up to seven systems were in concurrent use, each with its own instruction style, failure modes, and cost per pass, and the cost of the method was never the reasoning. It was the iteration: the same corpus re-run until the constraint set stopped producing new failures, then frozen so the next pass could not silently undo it.</p>
     </div>
     <div class="plate-foot">
       <span>Source · Observed build practice</span>
@@ -1305,22 +1305,22 @@
       <tbody>
         <tr>
           <td>Cognitive architecture and agent orchestration</td>
-          <td>Multi-agent coordination and conflict resolution; routing by observed behavior and cost per pass; system-prompt design governing persona, constraint and tool behavior.</td>
+          <td>Multi-agent coordination and conflict resolution; routing by observed behavior and cost per pass; system-prompt design governing persona, constraint, and tool behavior.</td>
           <td class="out">Fully exercised.</td>
         </tr>
         <tr>
-          <td>State, memory and context</td>
-          <td>Memory tiering across session, working and long-term context; continuity design across session discontinuity.</td>
+          <td>State, memory, and context</td>
+          <td>Memory tiering across session, working, and long-term context; continuity design across session discontinuity.</td>
           <td class="out">Vector store administration (Pinecone, Chroma, Qdrant); reranking and chunking pipelines.</td>
         </tr>
         <tr>
           <td>Implementation</td>
-          <td>Specification, direction and acceptance of implementation produced by models; verification of the result against the brief.</td>
+          <td>Specification, direction, and acceptance of implementation produced by models; verification of the result against the brief.</td>
           <td class="out">Orchestration frameworks and function-calling code written directly by hand.</td>
         </tr>
         <tr>
           <td>Governance and evaluation</td>
-          <td>Guardrails derived by iterated trial and error against a real-input corpus; corpus-based regression testing; tiered change control, freezes and verified restoration.</td>
+          <td>Guardrails derived by iterated trial and error against a real-input corpus; corpus-based regression testing; tiered change control, freezes, and verified restoration.</td>
           <td class="out">Off-the-shelf guardrail engines and evaluation frameworks, none of which were in the stack.</td>
         </tr>
       </tbody>
@@ -1328,8 +1328,8 @@
   </section>
 
   <footer class="colophon">
-    <p>RD-OS (Rapid Deploy Operating System) is an AI-assisted operational workspace for small businesses, built by one person directing multiple AI systems. The models produced implementation, analysis and options. The selection between options, the acceptance of results and the correction of failures were human decisions.</p>
-    <p>These plates describe methodology only. Proprietary implementation, internal architecture, unreleased capabilities and forward plans are excluded by design. Claims are grounded in the project's version history, dated engineering records committed at the time of the events described, and directly observed build and deployment results.</p>
+    <p>RD-OS (Rapid Deploy Operating System) is an AI-assisted operational workspace for small businesses, built by one person directing multiple AI systems. The models produced implementation, analysis, and options. The selection between options, the acceptance of results, and the correction of failures were human decisions.</p>
+    <p>These plates describe methodology only. Proprietary implementation, internal architecture, unreleased capabilities, and forward plans are excluded by design. Claims are grounded in the project's version history, dated engineering records committed at the time of the events described, and directly observed build and deployment results.</p>
     <p>The plates are sequential and make one argument when read in order: the failures of an AI system appear at the level of behavior, and governing behavior requires a mechanism placed exactly where the failure occurs. Not upstream of it in better instructions, and not downstream of it in better review.</p>
     <p class="sig">Traci White · Founder &amp; Orchestrator · sales@tinykitchenphx.com</p>
   </footer>
