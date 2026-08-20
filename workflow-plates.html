@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Eight mechanism diagrams of the human-governed multi-agent workflows behind RD-OS. Each plate names the level its failure lives at, then shows what managing at that level requires.">
+<style>*{margin:0;padding:0;box-sizing:border-box}</style>
+<title>RD-OS Workflow Plates</title>
+
+<style>
+  :root {
+    --paper:      #EDF0F4;
+    --sheet:      #FFFFFF;
+    --ink:        #16202B;
+    --ink-2:      #55677C;
+    --rule:       #C4CFDA;
+    --rule-soft:  #DEE5EC;
+    --fill:       #E7ECF2;
+    --mark:       #B23A26;
+    --mark-soft:  rgba(178, 58, 38, 0.10);
+
+    --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #10151B;
+      --sheet:     #171E27;
+      --ink:       #DBE3EC;
+      --ink-2:     #8FA0B3;
+      --rule:      #2E3A48;
+      --rule-soft: #232D39;
+      --fill:      #1F2833;
+      --mark:      #E4735C;
+      --mark-soft: rgba(228, 115, 92, 0.14);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:     #10151B;
+    --sheet:     #171E27;
+    --ink:       #DBE3EC;
+    --ink-2:     #8FA0B3;
+    --rule:      #2E3A48;
+    --rule-soft: #232D39;
+    --fill:      #1F2833;
+    --mark:      #E4735C;
+    --mark-soft: rgba(228, 115, 92, 0.14);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  /* ---- masthead ---- */
+
+  .masthead {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .masthead h1 {
+    font-family: var(--display);
+    font-size: clamp(34px, 5.2vw, 58px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.03;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .standfirst {
+    max-width: 62ch;
+    font-size: 19px;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .titleblock {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 6px;
+  }
+
+  .titleblock div {
+    background: var(--sheet);
+    padding: 11px 14px;
+  }
+
+  .titleblock dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0 0 3px;
+  }
+
+  .titleblock dd {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* ---- prose blocks ---- */
+
+  .thesis {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.018em;
+    line-height: 1.22;
+    text-wrap: balance;
+    max-width: 30ch;
+    margin: 4px 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--mark);
+  }
+
+  .locus {
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--mark-soft);
+    padding: 10px 22px 11px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--mark);
+  }
+
+  .note {
+    border-left: 2px solid var(--mark);
+    background: var(--mark-soft);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .note h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .note p {
+    max-width: 68ch;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* ---- legend ---- */
+
+  .legend {
+    border: 1px solid var(--rule);
+    background: var(--sheet);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .legend h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .legend-rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px 28px;
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .legend-row svg {
+    flex: 0 0 auto;
+    color: var(--ink);
+  }
+
+  /* ---- plates ---- */
+
+  .plate {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plate-head {
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 22px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 18px;
+  }
+
+  .plate-no {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    color: var(--mark);
+    font-weight: 600;
+  }
+
+  .plate-head h2 {
+    font-family: var(--display);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0;
+    flex: 1 1 340px;
+  }
+
+  .plate-competency {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .plate-body {
+    padding: 26px 22px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .plate-body > p {
+    max-width: 68ch;
+    margin: 0;
+    font-size: 16.5px;
+  }
+
+  .figure-scroll {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  figure {
+    margin: 0;
+    min-width: 640px;
+  }
+
+  figure svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    color: var(--ink);
+  }
+
+  figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule-soft);
+    max-width: 78ch;
+  }
+
+  .plate-foot {
+    border-top: 1px solid var(--rule);
+    margin-top: 18px;
+    padding: 12px 22px 13px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+  }
+
+  /* ---- svg diagram primitives ---- */
+
+  .d-box       { fill: var(--fill); stroke: currentColor; stroke-width: 1.25; }
+  .d-box-plain { fill: none;        stroke: currentColor; stroke-width: 1.25; }
+  .d-box-dash  { fill: none;        stroke: currentColor; stroke-width: 1.25; stroke-dasharray: 5 4; }
+  .d-box-human { fill: var(--mark-soft); stroke: var(--mark); stroke-width: 1.75; }
+
+  .d-flow      { fill: none; stroke: currentColor; stroke-width: 1.25; }
+  .d-flow-dash { fill: none; stroke: currentColor; stroke-width: 1.25; stroke-dasharray: 5 4; }
+  .d-flow-mark { fill: none; stroke: var(--mark);  stroke-width: 1.5; }
+
+  .d-t {
+    font-family: var(--display);
+    font-size: 13.5px;
+    font-weight: 500;
+    fill: var(--ink);
+    text-anchor: middle;
+  }
+
+  .d-lbl {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+    fill: var(--ink-2);
+    text-anchor: middle;
+  }
+
+  .d-lbl-s { text-anchor: start; }
+  .d-lbl-e { text-anchor: end; }
+  .d-lbl-mark { fill: var(--mark); }
+
+  .d-zone {
+    fill: none;
+    stroke: var(--mark);
+    stroke-width: 1.5;
+    stroke-dasharray: 7 5;
+  }
+
+  .d-col {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    fill: var(--ink-2);
+    text-anchor: middle;
+  }
+
+  .d-lane {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    fill: var(--ink-2);
+    text-anchor: start;
+  }
+
+  /* ---- index ---- */
+
+  .index {
+    border: 1px solid var(--rule);
+    background: var(--sheet);
+  }
+
+  .index h2 {
+    font-family: var(--display);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0;
+    padding: 18px 22px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .index table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+  }
+
+  .index th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-align: left;
+    font-weight: 600;
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .index td {
+    padding: 13px 22px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+
+  .index tr:last-child td { border-bottom: none; }
+
+  .index td.out { color: var(--ink-2); }
+
+  .gains {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .gains li {
+    max-width: 68ch;
+    font-size: 16px;
+    border-left: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+
+  .gains b {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mark);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .index .lede {
+    padding: 18px 22px 20px;
+    border-bottom: 1px solid var(--rule);
+    margin: 0;
+    max-width: 78ch;
+    font-size: 16px;
+  }
+
+  .index td.plates {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--mark);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .colophon {
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .colophon p {
+    max-width: 72ch;
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+
+  .colophon .sig {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+
+  a { color: var(--mark); }
+  a:focus-visible,
+  :focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+
+  @media (max-width: 620px) {
+    .wrap { padding: 36px 16px 72px; gap: 40px; }
+    .plate-body { padding: 20px 16px 8px; }
+    .plate-head, .plate-foot { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Engineering evidence · Workflow plate set</p>
+    <h1>RD-OS Workflow Plates</h1>
+    <p class="thesis">AI must be managed at the level where failure occurs.</p>
+
+    <p class="standfirst">Eight mechanism diagrams of the human-governed multi-agent workflows used to build RD-OS. Each plate names the level its failure lives at, then shows what managing at that level actually requires: how work was assigned across models, how disagreement was resolved, how behavior was constrained without tooling, and where a human decision was structurally required.</p>
+
+    <dl class="titleblock">
+      <div><dt>Prepared by</dt><dd>Traci White</dd></div>
+      <div><dt>Role</dt><dd>Founder &amp; Orchestrator</dd></div>
+      <div><dt>Sheet set</dt><dd>8 plates</dd></div>
+      <div><dt>Issued</dt><dd>2026-08-20</dd></div>
+      <div><dt>Source</dt><dd>Case Study Library</dd></div>
+    </dl>
+  </header>
+
+  <section class="note">
+    <h2>Scope of disclosure</h2>
+    <p>These plates document <strong>engineering methodology</strong>: how work was decided, assigned, evaluated and corrected. They deliberately exclude proprietary implementation, internal architecture, unreleased capabilities and forward plans. Each plate is drawn from a case study already cleared for external release, and cites that source in its title block.</p>
+    <p>Every diagram here is readable by someone with no prior knowledge of RD-OS. That is the point: the workflows are the transferable part.</p>
+  </section>
+
+  <section class="legend">
+    <h2>Notation</h2>
+    <div class="legend-rows">
+      <div class="legend-row">
+        <svg width="44" height="26" viewBox="0 0 44 26" aria-hidden="true"><rect class="d-box-human" x="2" y="4" width="40" height="18" /></svg>
+        <span>Human decision point, Founder authority</span>
+      </div>
+      <div class="legend-row">
+        <svg width="44" height="26" viewBox="0 0 44 26" aria-hidden="true"><rect class="d-box" x="2" y="4" width="40" height="18" /></svg>
+        <span>Model-performed step</span>
+      </div>
+      <div class="legend-row">
+        <svg width="44" height="26" viewBox="0 0 44 26" aria-hidden="true"><rect class="d-box-plain" x="2" y="4" width="40" height="18" /></svg>
+        <span>System state or recorded artifact</span>
+      </div>
+      <div class="legend-row">
+        <svg width="44" height="26" viewBox="0 0 44 26" aria-hidden="true"><rect class="d-box-dash" x="2" y="4" width="40" height="18" /></svg>
+        <span>Held, archived, or annotation</span>
+      </div>
+      <div class="legend-row">
+        <svg width="44" height="26" viewBox="0 0 44 26" aria-hidden="true"><rect class="d-zone" x="2" y="4" width="40" height="18" /></svg>
+        <span>Region operating under Founder authority</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLATE 00 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 00</span>
+      <h2>What an AI-OS actually manages</h2>
+      <span class="plate-competency">Orientation · Key plan</span>
+    </div>
+    <div class="locus">Failure occurs at · behavior, not hardware</div>
+    <div class="plate-body">
+      <p>A traditional operating system allocates hardware: processor time, memory pages, disk and device access, handed to deterministic programs that will do the same thing every time they run. An AI operating system allocates a different scarce resource. What has to be scheduled, budgeted and protected is context and reasoning, which means deciding how much of a limited context window a task gets, which model handles it at what cost, what the system remembers between sessions, and how several agents working at once stay coordinated instead of quietly contradicting each other.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 530" role="img" aria-label="A seven row comparison of a traditional operating system against an AI operating system across primary resource, scheduling, state and memory, execution logic, interface, evolution, and characteristic failure. In each row the traditional mechanism is replaced by an intelligence layer equivalent: hardware becomes context windows and model calls, process scheduling becomes orchestration of reasoning cycles, paging becomes tiered semantic memory, deterministic compilation becomes probabilistic agentic execution, system calls become natural language and tool calls, static patches become continuous adaptation, and crashes become drift, hallucination and silent scope expansion.">
+            <defs>
+              <marker id="ah0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <text class="d-col" x="125" y="40">FUNCTION</text>
+            <text class="d-col" x="385" y="40">TRADITIONAL OS</text>
+            <text class="d-col" x="725" y="40">AI-OS</text>
+
+            <rect class="d-box-plain" x="30" y="56" width="190" height="54" />
+            <text class="d-t" x="125" y="88">Primary resource</text>
+            <rect class="d-box-plain" x="250" y="56" width="270" height="54" />
+            <text class="d-t" x="385" y="79">CPU, RAM, storage,</text>
+            <text class="d-t" x="385" y="96">device hardware</text>
+            <rect class="d-box" x="580" y="56" width="290" height="54" />
+            <text class="d-t" x="725" y="79">Context windows, model calls,</text>
+            <text class="d-t" x="725" y="96">agent attention</text>
+            <line class="d-flow" x1="520" y1="83" x2="574" y2="83" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="122" width="190" height="54" />
+            <text class="d-t" x="125" y="154">Scheduling</text>
+            <rect class="d-box-plain" x="250" y="122" width="270" height="54" />
+            <text class="d-t" x="385" y="145">Process scheduler,</text>
+            <text class="d-t" x="385" y="162">CPU cycles</text>
+            <rect class="d-box" x="580" y="122" width="290" height="54" />
+            <text class="d-t" x="725" y="145">Orchestration of reasoning</text>
+            <text class="d-t" x="725" y="162">cycles across agents</text>
+            <line class="d-flow" x1="520" y1="149" x2="574" y2="149" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="188" width="190" height="54" />
+            <text class="d-t" x="125" y="220">State and memory</text>
+            <rect class="d-box-plain" x="250" y="188" width="270" height="54" />
+            <text class="d-t" x="385" y="211">Paging tables,</text>
+            <text class="d-t" x="385" y="228">file system paths</text>
+            <rect class="d-box" x="580" y="188" width="290" height="54" />
+            <text class="d-t" x="725" y="211">Tiered session, working</text>
+            <text class="d-t" x="725" y="228">and long-term memory</text>
+            <line class="d-flow" x1="520" y1="215" x2="574" y2="215" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="254" width="190" height="54" />
+            <text class="d-t" x="125" y="286">Execution logic</text>
+            <rect class="d-box-plain" x="250" y="254" width="270" height="54" />
+            <text class="d-t" x="385" y="277">Deterministic, rule-based,</text>
+            <text class="d-t" x="385" y="294">compiled</text>
+            <rect class="d-box" x="580" y="254" width="290" height="54" />
+            <text class="d-t" x="725" y="277">Probabilistic, agentic,</text>
+            <text class="d-t" x="725" y="294">natural language</text>
+            <line class="d-flow" x1="520" y1="281" x2="574" y2="281" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="320" width="190" height="54" />
+            <text class="d-t" x="125" y="352">Interface</text>
+            <rect class="d-box-plain" x="250" y="320" width="270" height="54" />
+            <text class="d-t" x="385" y="352">System calls</text>
+            <rect class="d-box" x="580" y="320" width="290" height="54" />
+            <text class="d-t" x="725" y="343">Natural language</text>
+            <text class="d-t" x="725" y="360">and tool calls</text>
+            <line class="d-flow" x1="520" y1="347" x2="574" y2="347" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="386" width="190" height="54" />
+            <text class="d-t" x="125" y="418">Evolution</text>
+            <rect class="d-box-plain" x="250" y="386" width="270" height="54" />
+            <text class="d-t" x="385" y="418">Periodic static patches</text>
+            <rect class="d-box" x="580" y="386" width="290" height="54" />
+            <text class="d-t" x="725" y="409">Continuous adaptation</text>
+            <text class="d-t" x="725" y="426">across passes</text>
+            <line class="d-flow" x1="520" y1="413" x2="574" y2="413" marker-end="url(#ah0)" />
+
+            <rect class="d-box-plain" x="30" y="452" width="190" height="54" />
+            <text class="d-t" x="125" y="484">Typical failure</text>
+            <rect class="d-box-plain" x="250" y="452" width="270" height="54" />
+            <text class="d-t" x="385" y="475">Crashes, leaks,</text>
+            <text class="d-t" x="385" y="492">malware</text>
+            <rect class="d-box" x="580" y="452" width="290" height="54" />
+            <text class="d-t" x="725" y="475">Drift, hallucination,</text>
+            <text class="d-t" x="725" y="492">silent scope expansion</text>
+            <line class="d-flow" x1="520" y1="479" x2="574" y2="479" marker-end="url(#ah0)" />
+          </svg>
+          <figcaption>The layers correspond; the substrate does not. Scheduling still exists, but what is scheduled is reasoning. Memory still exists, but it is semantic and tiered rather than paged. The characteristic failures are behavioral rather than mechanical, which is why they are answered with governance rather than with debugging.</figcaption>
+        </figure>
+      </div>
+
+      <p>Every plate that follows is an answer to one row of the right-hand column. The workflows in this set are what resource management looks like when the resource being managed is intelligence.</p>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Industry definition of AI-OS architecture</span>
+      <span>Reads as · The design surface the remaining plates operate on</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 01 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 01</span>
+      <h2>The orchestration transaction</h2>
+      <span class="plate-competency">AI Workflow Design</span>
+    </div>
+    <div class="locus">Failure occurs at · the gap between implemented and accepted</div>
+    <div class="plate-body">
+      <p>The unit of work is a transaction with an explicit termination condition. A model can reach <em>implemented</em> on its own; only a human transition reaches <em>accepted</em>. Separating those two states is what makes the rest of the system governable.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 960 356" role="img" aria-label="A work transaction: a Founder brief is assigned to a model, which produces output that returns to Founder evaluation. Evaluation either reaches an Accepted state or loops back to a re-brief with a narrowed constraint. A separate dashed path shows the model escalating on ambiguity instead of assuming.">
+            <defs>
+              <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <path class="d-flow-dash" d="M390,40 V20 H130 V34" marker-end="url(#ah1)" />
+            <text class="d-lbl" x="262" y="13">escalates on ambiguity · does not assume</text>
+
+            <rect class="d-box-human" x="40" y="40" width="180" height="56" />
+            <text class="d-t" x="130" y="73">Founder brief</text>
+
+            <rect class="d-box" x="300" y="40" width="180" height="56" />
+            <text class="d-t" x="390" y="73">Assigned model</text>
+
+            <rect class="d-box-plain" x="560" y="40" width="170" height="56" />
+            <text class="d-t" x="645" y="73">Model output</text>
+
+            <line class="d-flow" x1="220" y1="68" x2="294" y2="68" marker-end="url(#ah1)" />
+            <text class="d-lbl" x="257" y="58">assigns</text>
+
+            <line class="d-flow" x1="480" y1="68" x2="554" y2="68" marker-end="url(#ah1)" />
+            <text class="d-lbl" x="517" y="58">produces</text>
+
+            <line class="d-flow" x1="645" y1="96" x2="645" y2="138" marker-end="url(#ah1)" />
+            <text class="d-lbl d-lbl-s" x="656" y="122">returns work</text>
+
+            <polygon class="d-box-human" points="545,200 645,144 745,200 645,256" />
+            <text class="d-t" x="645" y="195">Founder</text>
+            <text class="d-t" x="645" y="212">evaluation</text>
+
+            <rect class="d-box-human" x="800" y="172" width="150" height="56" />
+            <text class="d-t" x="875" y="205">Accepted</text>
+
+            <line class="d-flow" x1="745" y1="200" x2="794" y2="200" marker-end="url(#ah1)" />
+            <text class="d-lbl" x="769" y="190">accepts</text>
+
+            <path class="d-flow" d="M645,256 V320 H130 V100" marker-end="url(#ah1)" />
+            <text class="d-lbl" x="400" y="312">re-brief · narrowed constraint · may reassign</text>
+          </svg>
+          <figcaption>Only the accent path reaches Accepted. A rejected result does not return as a free retry. It returns as a brief with a tighter constraint, which is what prevents the same failure from recurring.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 03 · 05 · 07 · 19</span>
+      <span>Evidences · Transaction structure, termination conditions, escalation over unilateral action</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 02 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 02</span>
+      <h2>Role allocation across a heterogeneous fleet</h2>
+      <span class="plate-competency">Multi-Agent AI Orchestration</span>
+    </div>
+    <div class="locus">Failure occurs at · assignment, not model capability</div>
+    <div class="plate-body">
+      <p>Models were not interchangeable. Each task class was routed by an observed characteristic (instruction adherence, reasoning depth, adversarial framing, domain grounding, cost per pass) rather than by general capability ranking. The routing criterion is the engineering content here; the assigned system is just where the criterion landed.</p>
+      <p>The bottom row came first. Before any code existed, operational domain input defined what RD-OS actually had to accomplish: the real menu, catering, logistics and correspondence constraints of a working business, and the edge cases those constraints generate.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 620" role="img" aria-label="A routing table in three columns. Each task class routes through an explicit selection criterion to an assigned system: architecture documentation to ChatGPT, risk analysis to Grok, execution against written instruction to Base44, repository implementation and verification to Claude Code, high-cost reasoning to Claude Opus, and operational domain definition to Gemini. An annotation beneath the last row lists the domain task set: menu development, catering criteria and constraints, logistical planning, correspondence, data organization, and edge cases.">
+            <defs>
+              <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <text class="d-col" x="155" y="26">TASK CLASS</text>
+            <text class="d-col" x="450" y="26">SELECTION CRITERION</text>
+            <text class="d-col" x="745" y="26">ASSIGNED ROLE</text>
+
+            <!-- row 1 -->
+            <rect class="d-box-plain" x="30" y="50" width="250" height="52" />
+            <text class="d-t" x="155" y="72">Architecture &amp;</text>
+            <text class="d-t" x="155" y="89">governance documentation</text>
+            <rect class="d-box-dash" x="340" y="50" width="220" height="52" />
+            <text class="d-t" x="450" y="72">long-form structural</text>
+            <text class="d-t" x="450" y="89">reasoning</text>
+            <rect class="d-box" x="620" y="50" width="250" height="52" />
+            <text class="d-t" x="745" y="81">ChatGPT</text>
+            <line class="d-flow" x1="280" y1="76" x2="334" y2="76" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="76" x2="614" y2="76" marker-end="url(#ah2)" />
+
+            <!-- row 2 -->
+            <rect class="d-box-plain" x="30" y="122" width="250" height="52" />
+            <text class="d-t" x="155" y="144">Risk analysis, research,</text>
+            <text class="d-t" x="155" y="161">roadmap</text>
+            <rect class="d-box-dash" x="340" y="122" width="220" height="52" />
+            <text class="d-t" x="450" y="153">adversarial framing</text>
+            <rect class="d-box" x="620" y="122" width="250" height="52" />
+            <text class="d-t" x="745" y="153">Grok</text>
+            <line class="d-flow" x1="280" y1="148" x2="334" y2="148" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="148" x2="614" y2="148" marker-end="url(#ah2)" />
+
+            <!-- row 3 -->
+            <rect class="d-box-plain" x="30" y="194" width="250" height="52" />
+            <text class="d-t" x="155" y="216">Execution against</text>
+            <text class="d-t" x="155" y="233">written instruction</text>
+            <rect class="d-box-dash" x="340" y="194" width="220" height="52" />
+            <text class="d-t" x="450" y="216">literal instruction</text>
+            <text class="d-t" x="450" y="233">adherence</text>
+            <rect class="d-box" x="620" y="194" width="250" height="52" />
+            <text class="d-t" x="745" y="225">Base44</text>
+            <line class="d-flow" x1="280" y1="220" x2="334" y2="220" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="220" x2="614" y2="220" marker-end="url(#ah2)" />
+
+            <!-- row 4 -->
+            <rect class="d-box-plain" x="30" y="266" width="250" height="52" />
+            <text class="d-t" x="155" y="288">Repository implementation</text>
+            <text class="d-t" x="155" y="305">&amp; verification</text>
+            <rect class="d-box-dash" x="340" y="266" width="220" height="52" />
+            <text class="d-t" x="450" y="288">reads and verifies</text>
+            <text class="d-t" x="450" y="305">in place</text>
+            <rect class="d-box" x="620" y="266" width="250" height="52" />
+            <text class="d-t" x="745" y="297">Claude Code</text>
+            <line class="d-flow" x1="280" y1="292" x2="334" y2="292" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="292" x2="614" y2="292" marker-end="url(#ah2)" />
+
+            <!-- row 5 -->
+            <rect class="d-box-plain" x="30" y="338" width="250" height="52" />
+            <text class="d-t" x="155" y="360">High-cost reasoning</text>
+            <text class="d-t" x="155" y="377">&amp; analysis</text>
+            <rect class="d-box-dash" x="340" y="338" width="220" height="52" />
+            <text class="d-t" x="450" y="360">reserved · higher cost</text>
+            <text class="d-t" x="450" y="377">per pass</text>
+            <rect class="d-box" x="620" y="338" width="250" height="52" />
+            <text class="d-t" x="745" y="369">Claude Opus</text>
+            <line class="d-flow" x1="280" y1="364" x2="334" y2="364" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="364" x2="614" y2="364" marker-end="url(#ah2)" />
+
+            <!-- row 6 -->
+            <rect class="d-box-plain" x="30" y="410" width="250" height="52" />
+            <text class="d-t" x="155" y="432">Operational domain</text>
+            <text class="d-t" x="155" y="449">definition and edge cases</text>
+            <rect class="d-box-dash" x="340" y="410" width="220" height="52" />
+            <text class="d-t" x="450" y="432">grounded in live</text>
+            <text class="d-t" x="450" y="449">business operations</text>
+            <rect class="d-box" x="620" y="410" width="250" height="52" />
+            <text class="d-t" x="745" y="441">Gemini</text>
+            <line class="d-flow" x1="280" y1="436" x2="334" y2="436" marker-end="url(#ah2)" />
+            <line class="d-flow" x1="560" y1="436" x2="614" y2="436" marker-end="url(#ah2)" />
+
+            <!-- domain task set annotation -->
+            <line class="d-flow" x1="155" y1="462" x2="155" y2="484" marker-end="url(#ah2)" />
+            <rect class="d-box-dash" x="30" y="490" width="560" height="100" />
+            <text class="d-lbl d-lbl-s" x="52" y="516">TASK SET · OPERATIONAL DOMAIN INPUT</text>
+            <text class="d-lbl d-lbl-s" x="52" y="540">· menu development</text>
+            <text class="d-lbl d-lbl-s" x="52" y="560">· catering criteria and constraints</text>
+            <text class="d-lbl d-lbl-s" x="52" y="580">· logistical planning</text>
+            <text class="d-lbl d-lbl-s" x="330" y="540">· correspondence</text>
+            <text class="d-lbl d-lbl-s" x="330" y="560">· data organization</text>
+            <text class="d-lbl d-lbl-s" x="330" y="580">· edge cases</text>
+          </svg>
+          <figcaption>Allocation is by observed behavior, not by vendor. The domain row is the one that does not originate in the codebase: it supplies the real operating constraints the system has to satisfy, which is what kept the architecture answerable to a working business rather than to an abstraction.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 02 · 03 · 06 · 13, plus operational domain records</span>
+      <span>Evidences · Role allocation across heterogeneous systems, cost-tiered assignment, domain grounding</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 03 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 03</span>
+      <h2>Consensus by challenge, not by vote</h2>
+      <span class="plate-competency">Multi-Agent AI Orchestration</span>
+    </div>
+    <div class="locus">Failure occurs at · disagreement, before it hardens into a decision</div>
+    <div class="plate-body">
+      <p>Architectural questions went to a chaired forum, not to a single model and not to a poll. Positions were stated, exchanged and contested: a model that disagreed had to support its position against the others, and rounds repeated until the disagreement resolved or stopped moving. No model held independent judgment and none decided alone.</p>
+      <p>The models had no channel to each other. Nothing in the stack let one system read, answer, or even see another's position, so every exchange was carried by hand: a position taken from one model, put to the next, its response carried back, round after round until the argument resolved or stopped producing new ground. The Founder was the chair and the transport at the same time.</p>
+      <p>The process is deliberately expensive, and its cost is human rather than computational. Convening the forum and relaying it to convergence costs far more than accepting the first plausible answer, which is why it was reserved for questions where being wrong cost more than the forum did.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 566" role="img" aria-label="The Founder tables an architectural question to a consensus forum that she chairs. Inside the forum three positions are stated and defended, but no position connects to another. Every exchange passes through a central relay node where the Founder carries each position to the others by hand, round after round. The forum output reaches a consensus check. If consensus is reached the result is recorded. If not, the Founder either calls another round back into the forum or issues a final judgment. Both routes produce the same recorded decision, binding on later passes.">
+            <defs>
+              <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+              <marker id="ah3m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="var(--mark)" />
+              </marker>
+            </defs>
+
+            <rect class="d-box-human" x="330" y="26" width="240" height="52" />
+            <text class="d-t" x="450" y="48">Founder tables</text>
+            <text class="d-t" x="450" y="65">the question</text>
+
+            <line class="d-flow" x1="450" y1="78" x2="450" y2="114" marker-end="url(#ah3)" />
+
+            <rect class="d-zone" x="40" y="120" width="820" height="230" />
+            <text class="d-lbl d-lbl-s d-lbl-mark" x="58" y="143">CONSENSUS FORUM · FOUNDER CHAIRS</text>
+            <text class="d-lbl" x="450" y="158">no direct channel between positions</text>
+
+            <rect class="d-box" x="70" y="170" width="200" height="52" />
+            <text class="d-t" x="170" y="192">Position A</text>
+            <text class="d-t" x="170" y="209">stated and defended</text>
+
+            <rect class="d-box" x="350" y="170" width="200" height="52" />
+            <text class="d-t" x="450" y="192">Position B</text>
+            <text class="d-t" x="450" y="209">stated and defended</text>
+
+            <rect class="d-box" x="630" y="170" width="200" height="52" />
+            <text class="d-t" x="730" y="192">Position C</text>
+            <text class="d-t" x="730" y="209">stated and defended</text>
+
+            <path class="d-flow-mark" d="M170,222 V240 H330 V256" marker-start="url(#ah3m)" marker-end="url(#ah3m)" />
+            <path class="d-flow-mark" d="M450,222 V256" marker-start="url(#ah3m)" marker-end="url(#ah3m)" />
+            <path class="d-flow-mark" d="M730,222 V240 H570 V256" marker-start="url(#ah3m)" marker-end="url(#ah3m)" />
+
+            <rect class="d-box-human" x="310" y="262" width="280" height="52" />
+            <text class="d-t" x="450" y="284">Founder carries each</text>
+            <text class="d-t" x="450" y="301">position to the others</text>
+
+            <text class="d-lbl" x="450" y="336">rounds repeat until positions stop moving</text>
+
+            <line class="d-flow" x1="450" y1="350" x2="450" y2="372" marker-end="url(#ah3)" />
+
+            <polygon class="d-box-plain" points="340,422 450,378 560,422 450,466" />
+            <text class="d-t" x="450" y="427">Consensus?</text>
+
+            <line class="d-flow" x1="560" y1="422" x2="610" y2="422" marker-end="url(#ah3)" />
+            <text class="d-lbl" x="585" y="412">no</text>
+
+            <rect class="d-box-human" x="616" y="396" width="244" height="52" />
+            <text class="d-t" x="738" y="418">Founder calls</text>
+            <text class="d-t" x="738" y="435">another round, or decides</text>
+
+            <path class="d-flow-mark" d="M738,396 V356" marker-end="url(#ah3m)" />
+            <text class="d-lbl d-lbl-s d-lbl-mark" x="750" y="378">another round</text>
+
+            <line class="d-flow" x1="450" y1="466" x2="450" y2="490" marker-end="url(#ah3)" />
+            <text class="d-lbl d-lbl-e" x="438" y="482">reached</text>
+
+            <path class="d-flow" d="M738,448 V470 H512 V490" marker-end="url(#ah3)" />
+            <text class="d-lbl" x="625" y="462">final judgment</text>
+
+            <rect class="d-box-human" x="320" y="496" width="260" height="52" />
+            <text class="d-t" x="450" y="518">Recorded decision,</text>
+            <text class="d-t" x="450" y="535">binding on later passes</text>
+          </svg>
+          <figcaption>Consensus here is produced, not sampled. Agreement carries information because each position had to survive challenge from the others, and every challenge crossed the chair to get there. The hub is not a simplification of the drawing: with no direct channel between models, the human was the message bus.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 06 · 10 · 12</span>
+      <span>Evidences · Chaired deliberation, manual cross-model relay, position defense under challenge, iterative convergence</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 04 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 04</span>
+      <h2>Scope interception</h2>
+      <span class="plate-competency">Human-Governed AI Collaboration</span>
+    </div>
+    <div class="locus">Failure occurs at · classification, before implementation</div>
+    <div class="plate-body">
+      <p>Capable models optimize. A model given a defined task, an explicit domain, positive and negative constraints, acceptance criteria and a rubric will still return more than it was asked for, because improving on the request is something the model brings to the work rather than a gap left open by the instruction. Prompt rigor lowers the rate; it does not remove the class.</p>
+      <p>That makes scope expansion a standing condition to be handled structurally, not a defect to be prompted away. The surplus is frequently good work, which is exactly what makes it hazardous: deleting it wastes it, and merging it silently expands the system past what was authorized. Classification happens before implementation, and out-of-brief work is preserved on a branch where it stays recoverable, but re-entry is a human decision, not a default.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 380" role="img" aria-label="A Founder brief goes to a model, which returns a change set. Each item is classified as within brief or not. In-scope items are implemented and accepted; out-of-scope items are archived on a branch and preserved as recoverable. A dashed return path shows that re-entry requires Founder authorization.">
+            <defs>
+              <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <rect class="d-box-human" x="60" y="40" width="180" height="52" />
+            <text class="d-t" x="150" y="71">Founder brief</text>
+
+            <rect class="d-box" x="310" y="40" width="230" height="52" />
+            <text class="d-t" x="425" y="71">Model returns change set</text>
+
+            <line class="d-flow" x1="240" y1="66" x2="304" y2="66" marker-end="url(#ah4)" />
+            <line class="d-flow" x1="425" y1="92" x2="425" y2="138" marker-end="url(#ah4)" />
+
+            <polygon class="d-box-human" points="325,190 425,140 525,190 425,240" />
+            <text class="d-t" x="425" y="185">Within</text>
+            <text class="d-t" x="425" y="202">brief?</text>
+
+            <rect class="d-box-dash" x="60" y="164" width="210" height="52" />
+            <text class="d-t" x="165" y="195">Archived on a branch</text>
+
+            <line class="d-flow" x1="325" y1="190" x2="276" y2="190" marker-end="url(#ah4)" />
+            <text class="d-lbl" x="300" y="178">out of scope</text>
+
+            <rect class="d-box" x="580" y="164" width="200" height="52" />
+            <text class="d-t" x="680" y="195">Implemented</text>
+
+            <line class="d-flow" x1="525" y1="190" x2="574" y2="190" marker-end="url(#ah4)" />
+            <text class="d-lbl" x="550" y="178">in scope</text>
+
+            <rect class="d-box-plain" x="60" y="270" width="210" height="52" />
+            <text class="d-t" x="165" y="292">Preserved,</text>
+            <text class="d-t" x="165" y="309">recoverable</text>
+
+            <line class="d-flow" x1="165" y1="216" x2="165" y2="264" marker-end="url(#ah4)" />
+            <text class="d-lbl d-lbl-s" x="176" y="244">never deleted</text>
+
+            <rect class="d-box-human" x="580" y="270" width="200" height="52" />
+            <text class="d-t" x="680" y="301">Accepted</text>
+
+            <line class="d-flow" x1="680" y1="216" x2="680" y2="264" marker-end="url(#ah4)" />
+            <text class="d-lbl d-lbl-s" x="691" y="244">verified</text>
+
+            <path class="d-flow-dash" d="M60,296 H24 V66 H54" marker-end="url(#ah4)" />
+            <text class="d-lbl" x="165" y="346">re-entry requires Founder authorization</text>
+          </svg>
+          <figcaption>The classification gate sits before implementation, not after review. Once out-of-brief work is merged it stops being visible as a scope question and becomes indistinguishable from the specification.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 04 · 19</span>
+      <span>Evidences · Scope preservation, autonomous expansion interception, non-destructive rejection</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 05 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 05</span>
+      <h2>Tiered change control and restoration</h2>
+      <span class="plate-competency">Engineering Decision Making</span>
+    </div>
+    <div class="locus">Failure occurs at · the moment of change to a frozen subsystem</div>
+    <div class="plate-body">
+      <p>Not every part of the system carries the same change cost, so authority is tiered rather than uniform. A freeze declared over a subsystem converts routine change into an authorization request. The lower row is the recovery path that makes the freeze enforceable: drift is restored against the same tagged baseline and verified byte-identical, so "restored" is a checkable claim rather than an assertion.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 478" role="img" aria-label="A tagged baseline leads to a declared freeze. An incoming change request is checked against whether its target is frozen. Unfrozen targets proceed normally; frozen targets route to a Founder authorization gate, which either applies the change and re-baselines, or holds it. A lower row shows drift detected, restored to baseline, and verified byte-identical against the original tag.">
+            <defs>
+              <marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <rect class="d-box" x="44" y="36" width="190" height="52" />
+            <text class="d-t" x="139" y="67">Baseline tagged</text>
+
+            <rect class="d-box-human" x="290" y="36" width="230" height="52" />
+            <text class="d-t" x="405" y="67">Freeze declared</text>
+
+            <line class="d-flow" x1="234" y1="62" x2="284" y2="62" marker-end="url(#ah5)" />
+
+            <rect class="d-box-plain" x="610" y="36" width="210" height="52" />
+            <text class="d-t" x="715" y="67">Change request</text>
+
+            <line class="d-flow" x1="715" y1="88" x2="715" y2="126" marker-end="url(#ah5)" />
+
+            <polygon class="d-box-plain" points="610,182 715,132 820,182 715,232" />
+            <text class="d-t" x="715" y="177">Target</text>
+            <text class="d-t" x="715" y="194">frozen?</text>
+
+            <line class="d-flow" x1="715" y1="232" x2="715" y2="276" marker-end="url(#ah5)" />
+            <text class="d-lbl d-lbl-s" x="726" y="258">no</text>
+
+            <rect class="d-box" x="615" y="282" width="200" height="52" />
+            <text class="d-t" x="715" y="313">Proceeds normally</text>
+
+            <line class="d-flow" x1="610" y1="182" x2="552" y2="182" marker-end="url(#ah5)" />
+            <text class="d-lbl" x="581" y="172">yes</text>
+
+            <rect class="d-box-human" x="316" y="156" width="230" height="52" />
+            <text class="d-t" x="431" y="187">Founder authorization</text>
+
+            <line class="d-flow" x1="431" y1="208" x2="431" y2="276" marker-end="url(#ah5)" />
+            <text class="d-lbl d-lbl-s" x="442" y="248">authorized</text>
+
+            <rect class="d-box" x="316" y="282" width="230" height="52" />
+            <text class="d-t" x="431" y="304">Applied,</text>
+            <text class="d-t" x="431" y="321">re-baselined</text>
+
+            <line class="d-flow" x1="316" y1="182" x2="260" y2="182" marker-end="url(#ah5)" />
+            <text class="d-lbl" x="288" y="172">not authorized</text>
+
+            <rect class="d-box-dash" x="44" y="156" width="210" height="52" />
+            <text class="d-t" x="149" y="187">Held</text>
+
+            <rect class="d-box-plain" x="44" y="376" width="200" height="52" />
+            <text class="d-t" x="144" y="407">Drift detected</text>
+
+            <rect class="d-box" x="300" y="376" width="220" height="52" />
+            <text class="d-t" x="410" y="407">Restored to baseline</text>
+
+            <rect class="d-box-human" x="576" y="376" width="240" height="52" />
+            <text class="d-t" x="696" y="407">Verified byte-identical</text>
+
+            <line class="d-flow" x1="244" y1="402" x2="294" y2="402" marker-end="url(#ah5)" />
+            <line class="d-flow" x1="520" y1="402" x2="570" y2="402" marker-end="url(#ah5)" />
+
+            <path class="d-flow-dash" d="M139,88 H22 V452 H410 V434" marker-end="url(#ah5)" />
+            <text class="d-lbl" x="243" y="466">restoration target · the same tag</text>
+          </svg>
+          <figcaption>The freeze and the baseline are one mechanism, not two. A freeze with no verifiable restoration point is a convention; a freeze anchored to a tag that can be diffed byte-for-byte is a control.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 19 · 20</span>
+      <span>Evidences · Tiered change control, authority boundaries, verified restoration</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 06 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 06</span>
+      <h2>Why reading the diff is not verification</h2>
+      <span class="plate-competency">AI Evaluation</span>
+    </div>
+    <div class="locus">Failure occurs at · the rendered artifact, not the diff</div>
+    <div class="plate-body">
+      <p>A whole class of defect is correct in source and wrong in output. Reviewing the diff cannot reach it, and a model reporting success is reporting that its change compiled, not that the result is right. The correction was procedural rather than technical: render the artifact at its real output size and inspect the artifact itself before accepting anything.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 400" role="img" aria-label="Two review paths compared. The upper source-only path goes from code change to reading the diff to assuming correctness, and ships the defect. The lower artifact path goes from code change through build and render at output size to observing the artifact, which surfaces a callout listing three defect classes visible only in the render. A crossed marker shows the callout is not reachable from the diff.">
+            <defs>
+              <marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <text class="d-lane" x="40" y="30">SOURCE-ONLY REVIEW</text>
+
+            <rect class="d-box" x="40" y="46" width="150" height="48" />
+            <text class="d-t" x="115" y="75">Code change</text>
+
+            <rect class="d-box" x="232" y="46" width="170" height="48" />
+            <text class="d-t" x="317" y="75">Read the diff</text>
+
+            <rect class="d-box-plain" x="444" y="46" width="180" height="48" />
+            <text class="d-t" x="534" y="75">Assumed correct</text>
+
+            <rect class="d-box-dash" x="666" y="46" width="194" height="48" />
+            <text class="d-t" x="763" y="68">Defect ships</text>
+            <text class="d-t" x="763" y="85">undetected</text>
+
+            <line class="d-flow" x1="190" y1="70" x2="226" y2="70" marker-end="url(#ah6)" />
+            <line class="d-flow" x1="402" y1="70" x2="438" y2="70" marker-end="url(#ah6)" />
+            <line class="d-flow" x1="624" y1="70" x2="660" y2="70" marker-end="url(#ah6)" />
+
+            <path class="d-flow-dash" d="M450,166 V140" />
+            <circle class="d-box-plain" cx="450" cy="126" r="10" />
+            <path class="d-flow" d="M444,120 L456,132 M456,120 L444,132" />
+            <text class="d-lbl d-lbl-s" x="470" y="130">not reachable from the diff</text>
+
+            <rect class="d-box-dash" x="250" y="170" width="400" height="100" />
+            <text class="d-lbl d-lbl-s" x="272" y="196">VISIBLE ONLY IN THE RENDERED ARTIFACT</text>
+            <text class="d-lbl d-lbl-s" x="272" y="220">· a rule cutting through a wrapped title</text>
+            <text class="d-lbl d-lbl-s" x="272" y="240">· rows clumping at real content density</text>
+            <text class="d-lbl d-lbl-s" x="272" y="260">· a footer colliding with the content above</text>
+
+            <text class="d-lane" x="40" y="304">ARTIFACT REVIEW</text>
+
+            <rect class="d-box" x="40" y="320" width="150" height="48" />
+            <text class="d-t" x="115" y="349">Code change</text>
+
+            <rect class="d-box" x="232" y="320" width="130" height="48" />
+            <text class="d-t" x="297" y="349">Build</text>
+
+            <rect class="d-box" x="404" y="320" width="180" height="48" />
+            <text class="d-t" x="494" y="342">Render at</text>
+            <text class="d-t" x="494" y="359">output size</text>
+
+            <rect class="d-box-human" x="626" y="320" width="190" height="48" />
+            <text class="d-t" x="721" y="342">Observe the</text>
+            <text class="d-t" x="721" y="359">artifact</text>
+
+            <line class="d-flow" x1="190" y1="344" x2="226" y2="344" marker-end="url(#ah6)" />
+            <line class="d-flow" x1="362" y1="344" x2="398" y2="344" marker-end="url(#ah6)" />
+            <line class="d-flow" x1="584" y1="344" x2="620" y2="344" marker-end="url(#ah6)" />
+
+            <path class="d-flow" d="M721,320 V292 H620 V276" marker-end="url(#ah6)" />
+            <text class="d-lbl" x="676" y="308">surfaces</text>
+          </svg>
+          <figcaption>The two paths differ by one step. Adding a render before acceptance is what makes an entire defect class reachable. The same three defects were present on both paths, and only one path could see them.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Case studies 09 · 11 · 15 · 18</span>
+      <span>Evidences · Empirical falsification, distinguishing model confidence from correctness</span>
+    </div>
+  </article>
+
+  <!-- ============ PLATE 07 ============ -->
+  <article class="plate">
+    <div class="plate-head">
+      <span class="plate-no">Plate 07</span>
+      <h2>An evaluation harness built without a framework</h2>
+      <span class="plate-competency">AI Evaluation · Guardrail derivation</span>
+    </div>
+    <div class="locus">Failure occurs at · the messy real input, not the clean test case</div>
+    <div class="plate-body">
+      <p>No evaluation or guardrail tooling was in the stack. There was no scoring library to install, no rerank or faithfulness metric to switch on, and no policy engine to declare rules to. Every constraint the system now enforces was found the long way, by running real input at it and watching what broke.</p>
+      <p>The method was corpus-based regression. A behavior to be constrained was tested against a corpus of sixty real unstructured inputs rather than a handful of convenient ones, because the failures that matter cluster in the messy cases and a clean test set hides them. When an input failed, the failure was characterized, a constraint was encoded, and then the <em>entire</em> corpus was re-run rather than only the input that had failed. That last step is the expensive one, and it is the one that makes the result trustworthy: constraints interact, and a fix that satisfies one input routinely breaks another that was already passing.</p>
+
+      <div class="figure-scroll">
+        <figure>
+          <svg viewBox="0 0 900 372" role="img" aria-label="A behavior to constrain is tested against a corpus of sixty real unstructured inputs. The full corpus is run and checked for failure. If a failure is observed, it is characterized, a constraint is encoded, and the loop returns to re-run every input in the corpus rather than only the one that failed. When the corpus runs clean, the constraint set is frozen as an acceptance test.">
+            <defs>
+              <marker id="ah7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+              </marker>
+            </defs>
+
+            <path class="d-flow" d="M40,190 H20 V20 H735 V34" marker-end="url(#ah7)" />
+            <text class="d-lbl" x="400" y="13">re-run every input, not only the one that failed</text>
+
+            <rect class="d-box-human" x="40" y="40" width="200" height="54" />
+            <text class="d-t" x="140" y="63">Behavior to</text>
+            <text class="d-t" x="140" y="80">constrain</text>
+
+            <rect class="d-box-plain" x="300" y="40" width="250" height="54" />
+            <text class="d-t" x="425" y="63">Corpus of 60 real</text>
+            <text class="d-t" x="425" y="80">unstructured inputs</text>
+
+            <line class="d-flow" x1="240" y1="67" x2="294" y2="67" marker-end="url(#ah7)" />
+
+            <rect class="d-box" x="620" y="40" width="230" height="54" />
+            <text class="d-t" x="735" y="72">Run the full corpus</text>
+
+            <line class="d-flow" x1="550" y1="67" x2="614" y2="67" marker-end="url(#ah7)" />
+            <line class="d-flow" x1="735" y1="94" x2="735" y2="130" marker-end="url(#ah7)" />
+
+            <polygon class="d-box-plain" points="635,190 735,136 835,190 735,244" />
+            <text class="d-t" x="735" y="185">Failure</text>
+            <text class="d-t" x="735" y="202">observed?</text>
+
+            <rect class="d-box" x="340" y="163" width="230" height="54" />
+            <text class="d-t" x="455" y="186">Characterize</text>
+            <text class="d-t" x="455" y="203">the failure</text>
+
+            <line class="d-flow" x1="635" y1="190" x2="576" y2="190" marker-end="url(#ah7)" />
+            <text class="d-lbl" x="605" y="180">yes</text>
+
+            <rect class="d-box-human" x="40" y="163" width="240" height="54" />
+            <text class="d-t" x="160" y="195">Encode the constraint</text>
+
+            <line class="d-flow" x1="340" y1="190" x2="286" y2="190" marker-end="url(#ah7)" />
+
+            <line class="d-flow" x1="735" y1="244" x2="735" y2="284" marker-end="url(#ah7)" />
+            <text class="d-lbl d-lbl-s" x="747" y="268">no</text>
+
+            <rect class="d-box-human" x="620" y="290" width="230" height="54" />
+            <text class="d-t" x="735" y="313">Frozen as an</text>
+            <text class="d-t" x="735" y="330">acceptance test</text>
+          </svg>
+          <figcaption>This is an evaluation harness assembled by hand. Tooling exists for this work now; none of it was in the stack, so regression discipline had to be the substitute. Constraints that survived the full corpus were frozen as acceptance tests rather than left as habits, which is what stops a hard-won behavior from eroding on a later pass.</figcaption>
+        </figure>
+      </div>
+
+      <p>Done by hand and at this cost, the method returns four properties that are worth stating on their own terms.</p>
+
+      <ul class="gains">
+        <li><b>A pass or fail gate, not a score</b>Constraint satisfaction is treated as a hard system invariant. A behavior either survives the corpus or it does not, so there is no threshold to interpret and no way for a fix to one failure to quietly reintroduce another.</li>
+        <li><b>Failures located, not merely detected</b>Hunting the exact point where output breaks maps the edge-case boundary rather than reporting that a boundary was crossed. What came out of it is specific knowledge of this architecture: where the prompt surface is vulnerable, where structural bias shows up, and where the logic has blind spots.</li>
+        <li><b>A benchmark that holds still</b>The corpus is fixed, real, captured input. The standard does not move when an underlying model updates, so behavior can be compared honestly across passes because the test did not change underneath the result.</li>
+        <li><b>Whole-system, not single-turn</b>The corpus exercises multi-turn state and execution rather than one response in isolation, so constraints are verified where the system actually operates instead of where it is easiest to measure.</li>
+      </ul>
+
+      <p>The workload this describes is poorly captured by counting models. Up to seven systems were in concurrent use, each with its own instruction style, failure modes and cost per pass, and the cost of the method was never the reasoning. It was the iteration: the same corpus re-run until the constraint set stopped producing new failures, then frozen so the next pass could not silently undo it.</p>
+    </div>
+    <div class="plate-foot">
+      <span>Source · Observed build practice</span>
+      <span>Evidences · Corpus-based regression, guardrail derivation without tooling, acceptance-test freezing</span>
+    </div>
+  </article>
+
+  <!-- ============ INDEX ============ -->
+  <section class="index">
+    <h2>Competency index</h2>
+    <table>
+      <thead>
+        <tr><th scope="col">Competency</th><th scope="col">Plates</th><th scope="col">What the plates evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI-OS Architecture</td>
+          <td class="plates">00</td>
+          <td>What an AI operating system allocates and governs, and how that differs from managing hardware for deterministic software.</td>
+        </tr>
+        <tr>
+          <td>Multi-Agent AI Orchestration</td>
+          <td class="plates">02 · 03</td>
+          <td>Role allocation across heterogeneous systems; authority boundaries; consensus triggering and resolution.</td>
+        </tr>
+        <tr>
+          <td>AI Evaluation</td>
+          <td class="plates">02 · 06 · 07</td>
+          <td>Assessment of model output by observation; empirical falsification; corpus-based regression; distinguishing model confidence from correctness.</td>
+        </tr>
+        <tr>
+          <td>AI Workflow Design</td>
+          <td class="plates">01 · 04</td>
+          <td>Transaction structure and termination conditions; specification methods that constrain rather than invite interpretation.</td>
+        </tr>
+        <tr>
+          <td>Engineering Decision Making</td>
+          <td class="plates">05 · 06</td>
+          <td>Delivery pipeline design; verified restoration; technology and process selection under documented bias.</td>
+        </tr>
+        <tr>
+          <td>Human-Governed AI Collaboration</td>
+          <td class="plates">01 · 03 · 04 · 05</td>
+          <td>Tiered change control; separation of implemented from accepted; scope preservation; escalation over unilateral action.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="index">
+    <h2>Scope of practice</h2>
+    <p class="lede">AI-OS work spans a wide surface and no single build covers all of it. This is the boundary of what the plates evidence, stated so that the claims above can be read precisely. The right-hand column is not a gap in the system; it is work this build did not require or did not have available.</p>
+    <table>
+      <thead>
+        <tr><th scope="col">Domain</th><th scope="col">Exercised in this build</th><th scope="col">Outside this build</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cognitive architecture and agent orchestration</td>
+          <td>Multi-agent coordination and conflict resolution; routing by observed behavior and cost per pass; system-prompt design governing persona, constraint and tool behavior.</td>
+          <td class="out">Fully exercised.</td>
+        </tr>
+        <tr>
+          <td>State, memory and context</td>
+          <td>Memory tiering across session, working and long-term context; continuity design across session discontinuity.</td>
+          <td class="out">Vector store administration (Pinecone, Chroma, Qdrant); reranking and chunking pipelines.</td>
+        </tr>
+        <tr>
+          <td>Implementation</td>
+          <td>Specification, direction and acceptance of implementation produced by models; verification of the result against the brief.</td>
+          <td class="out">Orchestration frameworks and function-calling code written directly by hand.</td>
+        </tr>
+        <tr>
+          <td>Governance and evaluation</td>
+          <td>Guardrails derived by iterated trial and error against a real-input corpus; corpus-based regression testing; tiered change control, freezes and verified restoration.</td>
+          <td class="out">Off-the-shelf guardrail engines and evaluation frameworks, none of which were in the stack.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="colophon">
+    <p>RD-OS (Rapid Deploy Operating System) is an AI-assisted operational workspace for small businesses, built by one person directing multiple AI systems. The models produced implementation, analysis and options. The selection between options, the acceptance of results and the correction of failures were human decisions.</p>
+    <p>These plates describe methodology only. Proprietary implementation, internal architecture, unreleased capabilities and forward plans are excluded by design. Claims are grounded in the project's version history, dated engineering records committed at the time of the events described, and directly observed build and deployment results.</p>
+    <p>The plates are sequential and make one argument when read in order: the failures of an AI system appear at the level of behavior, and governing behavior requires a mechanism placed exactly where the failure occurs. Not upstream of it in better instructions, and not downstream of it in better review.</p>
+    <p class="sig">Traci White · Founder &amp; Orchestrator · sales@tinykitchenphx.com</p>
+  </footer>
+
+</div>
+</body>
+</html>
