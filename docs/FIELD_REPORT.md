@@ -1,12 +1,12 @@
-# Field Report — Managing AI Behavior at the Layer Where the Failure Occurs
+# Field Report: Managing AI Behavior at the Layer Where the Failure Occurs
 
 **Traci White** · Founder, RD-OS
 Employment Evidence Series · Exhibit 01
 
 > **AI behavior must be managed at the level where the failure occurs.**
 
-A field report from building RD-OS — an operational platform whose engineering was carried out by
-multiple frontier AI systems — and why writing better prompts stopped working.
+A field report from building RD-OS, an operational platform whose engineering was carried out by
+multiple frontier AI systems, and why writing better prompts stopped working.
 
 **[▶ Watch the field report](../video/rd-os-field-report.mp4)** · MP4 · 1080 × 1350 · 2 minutes 40 seconds
 
@@ -79,7 +79,7 @@ outcome, the instruction was never where the failure lived.
 
 ---
 
-## Exhibit A — when one word meant seven different files
+## Exhibit A: when one word meant seven different files
 
 I gave an explicit instruction: save the master copy, freeze it, and build from a working copy.
 
@@ -96,9 +96,9 @@ resolves to seven things.
 So I retired the word from the project's vocabulary. A hash became the only identity. Any ambiguous
 reference now triggers a required response: *"Which file, specifically?"*
 
-**Layer: referent identity — not prompt.**
+**Layer: referent identity, not prompt.**
 
-## Exhibit B — the requirement was already written down
+## Exhibit B: the requirement was already written down
 
 A redesign had been rejected three times across three review sessions.
 
@@ -115,7 +115,7 @@ it to the single acceptance condition for the task:
 > for this item.
 
 What came back was a report that the work was shipped and **"screenshot-verified."** No image.
-Internal scripts were described as having performed the comparison. Narrated — not shown.
+Internal scripts were described as having performed the comparison. Narrated, not shown.
 
 **Layer: acceptance evidence.**
 
@@ -123,7 +123,7 @@ Internal scripts were described as having performed the comparison. Narrated —
 
 ## The discovery
 
-> ### Writing the requirement down is *also* the instruction layer — and it has the same ceiling.
+> ### Writing the requirement down is *also* the instruction layer, and it has the same ceiling.
 
 I had assumed documentation was different in kind from prompting. It isn't. A rule in a governance
 file is still an instruction, and it fails the same way for the same reason.
@@ -179,13 +179,13 @@ Where each failure actually lived, and what resolved it:
 | What went wrong | Layer | What fixed it |
 |---|---|---|
 | Completion claimed confidently, without evidence | Claim form | Evidence only; "not found" ≠ "does not exist" |
-| Silent crash — nothing rendered, nothing reported | Observability | Crash reporter wired into boot |
+| Silent crash, nothing rendered, nothing reported | Observability | Crash reporter wired into boot |
 | One word resolving to seven artifacts | Referent identity | Word retired; hash is identity |
 | An approved build that couldn't be identified later | Approval protocol | Five-part identity block at approval |
 | Prose work orders followed correctly, still missed | Task form | Seven mandatory fields; narrative banned |
 | Verification narrated instead of shown | Acceptance evidence | Must be independently inspectable |
 | Drift that no volume of constraints could stop | Model assignment | Reassigned the work |
-| No repository at all — sandbox storage, no change log | Infrastructure | Version control |
+| No repository at all, sandbox storage, no change log | Infrastructure | Version control |
 
 **Not one of these was solved by writing a better prompt.**
 
@@ -198,7 +198,7 @@ determine when its own work was complete.
 
 **Capability and execution discipline are not the same thing.** The same system that caught a false
 infrastructure claim, diagnosed a real bug to root cause, and correctly refused to build an
-unspecified feature — was also unreliable as an execution steward. Both are true. Holding both is
+unspecified feature, was also unreliable as an execution steward. Both are true. Holding both is
 the job.
 
 So the evaluator's question is not *"did the model fail?"* It is **"was this an appropriate task for
@@ -217,4 +217,4 @@ orchestration · engineering governance
 
 ---
 
-**Traci White** — sales@tinykitchenphx.com
+**Traci White** · sales@tinykitchenphx.com

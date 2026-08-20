@@ -1,4 +1,4 @@
-# Exhibit 02 — Beyond Prompting
+# Exhibit 02: Beyond Prompting
 
 ### A Model-Aware Approach to AI Evaluation
 
@@ -10,7 +10,7 @@ Employment Evidence Series
 **[▶ Watch](../video/rd-os-exhibit-02-beyond-prompting.mp4)** · MP4 · 1080 × 1350 · 3 minutes
 
 Exhibit 01 documents what happened, with the evidence. This exhibit is the mental model that came
-out of it — what I learned observing, evaluating, and working alongside multiple AI systems, and the
+out of it: what I learned observing, evaluating, and working alongside multiple AI systems, and the
 operating model I now work from.
 
 ---
@@ -37,13 +37,13 @@ this model actually capable of doing reliably?"**
 Then three smaller questions, every time: What does it naturally do? Where does it fail? How should
 I architect the work around that?
 
-That is a different discipline. Prompting is one layer inside it — not the whole of it.
+That is a different discipline. Prompting is one layer inside it, not the whole of it.
 
 ---
 
 ## Model characterization
 
-I was building an operational profile of each system — not "this one is good at X," but something
+I was building an operational profile of each system, not "this one is good at X," but something
 repeatable across any model I pick up next.
 
 | | |
@@ -53,13 +53,13 @@ repeatable across any model I pick up next.
 | **Reasoning style** | How does it approach a complex problem? |
 | **Representation** | Which forms of information does it handle best? |
 | **Output behavior** | What does it naturally produce? |
-| **Constraint response** | Do more instructions help — or add complexity? |
+| **Constraint response** | Do more instructions help, or add complexity? |
 | **Recovery behavior** | What happens when it is corrected? |
 | **Role suitability** | What should it *not* be assigned? |
 
 ## Role assignment
 
-The systems became instruments. I didn't need every system to perform every task — I needed to know
+The systems became instruments. I didn't need every system to perform every task. I needed to know
 which passage each one could actually play.
 
 **A model failure is not always a model problem.** Sometimes it is a role-assignment problem, and
@@ -88,12 +88,12 @@ place?"** That moves evaluation past labeling outputs good or bad.
 
 Evaluation begins *before* the prompt is written.
 
-1. **Capability** — What am I actually testing?
-2. **Evidence** — What information must the model integrate to get there?
-3. **Failure mode** — What plausible-but-wrong answer am I looking for?
-4. **Ground truth** — What makes the correct answer objectively verifiable?
-5. **Task design** — Can I expose the weakness without introducing ambiguity?
-6. **Prompt** — Only now do I write the instruction.
+1. **Capability**: What am I actually testing?
+2. **Evidence**: What information must the model integrate to get there?
+3. **Failure mode**: What plausible-but-wrong answer am I looking for?
+4. **Ground truth**: What makes the correct answer objectively verifiable?
+5. **Task design**: Can I expose the weakness without introducing ambiguity?
+6. **Prompt**: Only now do I write the instruction.
 
 ## Not every hard question is a good evaluation
 
@@ -105,7 +105,7 @@ Three questions. Each one tests something different.
 | What operations must it perform to get there? | Reasoning architecture |
 | **Can I expose a specific boundary while the answer stays human-verifiable?** | **Evaluation design** |
 
-Only the third one designs an evaluation. The aim is not obscurity — it is a controlled gap between
+Only the third one designs an evaluation. The aim is not obscurity. It is a controlled gap between
 what a person can verify and what the model reliably does.
 
 A well-formed evaluation task is **human-verifiable · objectively grounded · sufficiently complex ·
@@ -128,7 +128,7 @@ Video understanding
 ```
 
 **The answer isn't in any single frame.** A model that retrieves instead of reconstructing returns
-something plausible — and wrong. Designing the task is what makes that difference observable.
+something plausible, and wrong. Designing the task is what makes that difference observable.
 
 ---
 
@@ -167,7 +167,7 @@ Eight stages. Each one answers a question the previous stage makes it possible t
 
 ## The human role
 
-The human doesn't disappear. The role moves **upward** — from writing instructions, to defining the
+The human doesn't disappear. The role moves **upward**, from writing instructions, to defining the
 task, to selecting the appropriate model, to defining evidence and acceptance criteria, to
 evaluating behavior against them, to intervening at the correct layer, to **making the final
 decision.**
@@ -179,16 +179,16 @@ decision.**
 
 ## Capability index
 
-**AI Training & Evaluation** — Generative AI Evaluation · LLM Response Evaluation · Multimodal AI
+**AI Training & Evaluation**: Generative AI Evaluation · LLM Response Evaluation · Multimodal AI
 Evaluation · AI Trainer / Human Feedback · Prompt Engineering · Reasoning-Centric Prompt Design ·
 Model Failure Analysis · Model-Stumping Prompt Design · Ground-Truth Development · Rubric
 Development · Positive & Negative Evaluation Criteria · Reviewer Calibration · AI Quality Assurance
 
-**Multimodal & Reasoning** — Audio-Visual Reasoning · Video Understanding · Cross-Modal Reasoning ·
+**Multimodal & Reasoning**: Audio-Visual Reasoning · Video Understanding · Cross-Modal Reasoning ·
 Temporal Reasoning · Cross-Segment Analysis · Sequence Reconstruction · Entity / Object Tracking ·
 Relationship Reasoning · Distractor Detection · Evidence Synthesis · Ambiguity Resolution
 
-**AI Technologies** — LLMs · Generative AI · RAG · Responsible AI · Machine Learning Concepts ·
+**AI Technologies**: LLMs · Generative AI · RAG · Responsible AI · Machine Learning Concepts ·
 Claude · ChatGPT · Grok · Base44 · Copilot · Google Gemini · Google AI Tools
 
 ---
@@ -196,4 +196,4 @@ Claude · ChatGPT · Grok · Base44 · Copilot · Google Gemini · Google AI Too
 > **Better AI work doesn't begin with better prompting.**
 > **It begins with understanding the system you're working with.**
 
-**Traci White** — sales@tinykitchenphx.com
+**Traci White** · sales@tinykitchenphx.com
